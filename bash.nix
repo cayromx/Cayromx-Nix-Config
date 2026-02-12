@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let 
+  blesh = pkgs.blesh;
+in 
+
 {
     programs.bash = {
     enable = true;
