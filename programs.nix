@@ -18,8 +18,12 @@
          nerd-fonts.jetbrains-mono
          heroic
          lutris
+         catppuccin-kde
          protonup-qt
          openssh
+         qt6Packages.qtstyleplugin-kvantum
+         catppuccin-kvantum
+         gcc
          #cisco override
         ( ciscoPacketTracer8.override { 
            packetTracerSource = fetchurl { 

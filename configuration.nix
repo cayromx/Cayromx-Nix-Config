@@ -17,11 +17,18 @@
     ];
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
-  
+     
+  #Variables
+
+  environment.sessionVariables = {
+    MESA_SHADER_CACHE_DISABLE = "0";
+    mesa_glthread = "true";
+   };
+
   #default shell
   
   environment.shells = with pkgs; [ bash ];
@@ -30,7 +37,7 @@
   # flakes support
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+    
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 

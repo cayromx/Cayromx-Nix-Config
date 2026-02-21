@@ -17,8 +17,10 @@ in
     ./starship.nix
     ./mangohud.nix
     ./bash.nix
+    ./catppuccin.nix
+    ./plasma.nix
    ];
-
+  
   programs.git = {
     enable = true;
     userName = "przemyslaw";
@@ -30,16 +32,21 @@ in
       "~/Cayromx-Nix-Config/hardware-configuration.nix"
      ];
     };
+  
+   qt = {
+     enable = true;
+     platformTheme.name = "kde";
+     style.name = "kvantum";
+    };
 
-
-  # You should not change this value, even if you update Home Manager. If you do
+# You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs;  [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -106,6 +113,10 @@ in
     mimeType = [ "application/x-pkt" "application/x-pka" "x-scheme-handler/pttp" ];
   }; 
 
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=Catppuccin-Frappe-Blue
+  '';
   programs.vscode = { 
     enable = true;
     extensions = with pkgs.vscode-extensions; [
